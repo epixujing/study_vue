@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="vue.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="div1">
+      <input type="text" v-model="n1">+
+      <input type="text" v-model="n2">=
+      {{sum()}}
+    </div>
+  </body>
+
+  <script>
+  let vm=new Vue({
+    el: '#div1',
+    data: {
+      n1: 0, n2: 0
+    },
+    methods: {
+      sum(){
+        return parseInt(this.n1)+parseInt(this.n2);
+      }
+    }
+  });
+  </script>
+</html>
