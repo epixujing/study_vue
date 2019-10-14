@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+    }
+    #app {
+      margin:50px auto 0px;
+      width: 500px;
+      height: 300px;
+      border: 2px solid pink;
+    }
+    #header ul {
+      display: block;
+      list-style: none;
+      overflow: hidden;
+    }
+    ul li {
+      box-sizing: border-box;
+      padding: 0px 20px;
+      float: left;
+      width: 100px;
+      border-bottom: 2px solid red;
+      border-right: 1px solid red;
+    }
+    .isActive {
+      background-color:blue;
+    }
+    .noActive {
+      background-color: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+      <div id="header">
+        <ul  >
+          <template v-for="(item,index) in items">
+            <li :class='isActive[index]?"isActive":"noActive"' data-id='index' @click='toggle(index)'> {{item}}   </li>
+          </template>
+        </ul>
+      </div>
+      <div id="content">
+        {{msg}}
+      </div>
+  </div>
+</body>
+</html>   
+<script>
+  let app = new Vue({
+    el:'#app',
+    data:{
+      isActive:[false,false,false,false,false],
+      msg:`this is the test mes`,
+      items:['页面1','页面2','页面3','页面4','页面5']
+    },
+    methods:{
+      toggle(e){
+        this.isActive = [false,false,false,false,false]
+        this.isActive[e] = true
+        console.log(this.isActive)
+      }
+      
+    }
+  })
+</script>
+
+
+
+<!-- msg中的信息能不能出现空格出现在HTML中 -->
